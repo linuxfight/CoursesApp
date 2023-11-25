@@ -1,0 +1,16 @@
+﻿@model List<Course>
+
+<div>
+	<div style="display: grid; grid-template-rows: @Model.Count; grid-template-columns: 3;">
+		@foreach (var course in Model)
+		{
+			<p style="grid-column: 1/2"> @course.Id. </p>
+			<h2 style="grid-column: 2/3"> @course.Title </h2>
+			<form>
+				<input type="text" name="id" value="@course.Id" hidden/>
+				<input class="btn btn-primary" type="submit" value="Edit" asp-action="EditCourse" />
+				<input class="btn btn-danger" type="submit" value="Delete" asp-action="DeleteCourse" />
+			</form>
+		}
+	</div>
+</div>

@@ -1,0 +1,17 @@
+﻿@model Course
+
+<div>
+	<h2> Edit course @Model.Title </h2>
+
+	<form asp-action="EditCourse" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+		<input type="text" asp-for="Id" value="@Model.Id" hidden />
+		<label>Title: </label>
+		<input type="text" asp-for="Title" value="@Model.Title" />
+		<label>Description: </label>
+		<input type="text" asp-for="Description" value="@Model.Description" />
+		<label>Picture: </label>
+		<input type="file" name="file" />
+
+		<input class="btn btn-primary" type="submit" value="Save course" />
+	</form>
+</div>

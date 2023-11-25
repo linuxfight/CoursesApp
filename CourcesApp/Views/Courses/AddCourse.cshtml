@@ -1,0 +1,17 @@
+﻿@model Course
+
+<div>
+	<h2> Add new course </h2>
+
+	<form asp-action="AddToList" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+		<input type="text" asp-for="Id" value="@Model.Id" hidden />
+		<label>Title: </label>
+		<input type="text" asp-for="Title" value="" />
+		<label>Description: </label>
+		<input type="text" asp-for="Description" value="" />
+		<label>Picture: </label>
+		<input type="file" name="file"/>
+
+		<input class="btn btn-primary" type="submit" value="Add course" />
+	</form>
+</div>
