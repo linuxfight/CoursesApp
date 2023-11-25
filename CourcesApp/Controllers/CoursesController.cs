@@ -31,18 +31,17 @@ namespace CourcesApp.Controllers
 
 		public IActionResult AddToList(Course course, IFormFile file) 
 		{
-			var path = "";
 			if (file != null && file.Length > 0)
 			{
 				var extension = Path.GetExtension(file.FileName);
 				var fileName = Guid.NewGuid().ToString() + extension;
 				var uploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "pictures");
-				path = Path.Combine(uploadFolder, fileName);
+				var path = Path.Combine(uploadFolder, fileName);
 				var stream = new FileStream(path, FileMode.Create);
 				file.CopyTo(stream);
 				stream.Close();
+				course.imagePath = fileName;
 			}
-			course.imagePath = path;
 
 			DataCourses.Courses.Add(course);
 			return RedirectToAction("Index");
@@ -75,7 +74,7 @@ namespace CourcesApp.Controllers
 				file.CopyTo(stream);
 				stream.Close();
 				if (courseToUpdate != null)
-					courseToUpdate.imagePath = path;
+					courseToUpdate.imagePath = fileName;
 			}
 			return View(course);
 		}

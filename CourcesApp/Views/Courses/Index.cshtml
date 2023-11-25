@@ -3,11 +3,10 @@
 <div style="display: flex; flex-direction: row;">
 	@foreach (var course in Model)
 	{
-		var fileName = new FileInfo(course.imagePath).Name;
 		<div style="display: flex; flex-direction: column; margin: 10px;">
 			<h2> @course.Id. @course.Title </h2>
 			<p> @course.Description </p>
-			<img src="/pictures/@fileName" style="width: 400px; height: 100%;" />
+			<img src="/pictures/@course.imagePath" style="width: 400px; height: 100%;" />
 		</div>
 	}
 </div>
